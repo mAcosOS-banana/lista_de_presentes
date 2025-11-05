@@ -1,0 +1,46 @@
+:root {
+   padding: 0;
+   margin: 0;
+
+   --max-width: 375px;
+   --px-lg: 2rem ;
+
+
+   /*--> 
+   Font-Sizing   
+   <--*/
+   --fs-sm: 0.5rem;
+   --fs-md: 1rem;
+   --fs-lg: 1.5rem;
+   --fs-xl: 2rem;
+   --fs-xxl: 2.5rem
+
+
+   /*--> 
+   Color-Scheme   
+   <--*/
+   --brand-color: ;
+
+}
+
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+::after,
+::before {
+   padding: 0;
+   margin: 0;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+}
+
+
+body {
+  /*--> background-color: rgba(7, 6, 6, 0.911); <--*/
+}
