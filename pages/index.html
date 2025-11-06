@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="stylesheet" href="../styles/index.css" />
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Chá de Panela | Login</title>
-      <link rel="stylesheet" href="../styles/index.css" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Momo+Trust+Display&display=swap"
+         rel="stylesheet"
+      />
    </head>
    <body>
       <main>
-         <section id="login" class="container">
-            <nav>
-               <h1>Portal de Presentes</h1>
-            </nav>
+         <header>
+            <div class="container">
+               <nav class="flex center-items">
+                  <h1 class="px-md">Portal de Presentes</h1>
+               </nav>
+            </div>
+         </header>
 
-            <div id="fields-box">
-               <form action="/" method="post">
-                  <div id="fields-wrapper">
-                     <label for="guest_number">Número de Convidado</label>
-                     <input id="guest_number" type="number"/>
-                     
-                     <p>Preencha o campo com número que está no convite</p>
+         <section id="login" class="container flex center-items">
+            <div id="fields-box" class="">
+               <form action="/" method="post" class="pd-32">
+                  <div id="fields-wrapper" class="px-lg">
+                     <label for="guest_number" class="flex text-center"
+                        >Número de Convidado</label
+                     >
+                     <input
+                        id="guest_number"
+                        type="number"
+                        class="input-base fill-size no-spin mg-xsm"
+                     />
 
-                     <button>ENTRAR</button>
+                     <p class="">
+                        Preencha o campo com número que está no convite
+                     </p>
+
+                     <button class="btn btn-md fill-size mg-md">ENTRAR</button>
                   </div>
                </form>
             </div>

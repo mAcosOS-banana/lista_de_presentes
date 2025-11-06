@@ -27,6 +27,8 @@
    box-sizing: border-box;
    padding: 0;
    margin: 0;
+   font-family: "Archivo";
+   letter-spacing: 0.019rem;
 }
 
 ::after,

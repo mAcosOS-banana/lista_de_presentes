@@ -1,0 +1,10 @@
+main header {
+   background-color: black;
+   
+   
+}
+
+main header nav h1 {
+   font-size: var(--fs-lg);
+   color: rgb(228, 225, 217);
+}

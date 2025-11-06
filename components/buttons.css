@@ -1,0 +1,22 @@
+.btn {
+   border: solid 1px black;
+   background-color: rgb(2, 1, 0);
+   color: aliceblue;
+   border-radius: 0.4rem;
+}
+
+.btn:hover {
+   background-color: rgb(85, 84, 84);
+   border: solid 1px black;
+   color:aliceblue;
+}
+
+.btn-md {
+   padding-block: 0.75rem;
+   padding-inline: 1rem;
+}
+
+.btn-md.fill-size {
+   width: 100%;
+}
+

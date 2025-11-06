@@ -1,4 +1,29 @@
-.btn {
-   border: none
-   
+
+input[type="number"] {
+   text-align: center;
+}
+
+.input-base {
+   border: solid gray 2px;
+   padding: 0.345rem;
+   border-radius: 0.4rem;
+}
+
+.input-base:focus {
+   border: solid 2px rgb(115, 138, 136);
+   outline: none;
+}
+
+.input-base.fill-size {
+   width: 100%;
+}
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
 }

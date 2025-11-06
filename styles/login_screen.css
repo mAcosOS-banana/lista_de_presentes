@@ -1,0 +1,13 @@
+
+
+#login #fields-box {
+   display: flex; 
+   padding-top: 7rem;
+}
+
+form {
+  
+   border-radius: 0.4rem;
+   box-shadow: 0.2rem 2px 1rem 6px rgb(158, 154, 154);   
+}
+

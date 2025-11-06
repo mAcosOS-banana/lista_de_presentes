@@ -1,5 +1,3 @@
-from typing import *
-from flask import jsonify
 from dataclasses import dataclass, asdict
 
 @dataclass
