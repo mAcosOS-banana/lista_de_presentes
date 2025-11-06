@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Lista de Presentes | Hortinbox</title>
+      <link rel="stylesheet" href="../static/styles.css" />
+   </head>
+   <body>
+      <header>
+         <h1>🎁 Lista de Presentes Hortinbox</h1>
+         <div style="position: absolute; top: 1.5rem; right: 1.5rem">
+            <button id="myGiftsBtn" style="margin-right: 10px">
+               Meus Presentes
+            </button>
+
+            <button id="logoutBtn">Sair</button>
+         </div>
+      </header>
+
+      <main id="gift-list"></main>
+
+      <footer><p>🌿 Hortinbox - Cultive boas lembranças</p></footer>
+
+      <script src="../static/script.js"></script>
+
+      <script>
+         // botão "Meus Presentes" → redireciona para a página de presentes do usuário
+         document.getElementById("myGiftsBtn").addEventListener("click", () => {
+            window.location.href = "/meus-presentes";
+         });
+      </script>
+   </body>
+</html>
