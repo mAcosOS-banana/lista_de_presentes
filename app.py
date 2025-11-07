@@ -8,10 +8,10 @@ from models.gifts_guest import GiftsGuest
 from schemas.gift_schema import GiftSchema
 from schemas.guests_schema import GuestSchema
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 
-load_dotenv()
+#load_dotenv()
 
 
 app = Flask(__name__)
@@ -29,8 +29,17 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-CORS(app,supports_credentials=True, sources={r"/*": {"origins": ["https://hortinbox.com.br", "https://www.hortinbox.com.br","https://gift.hortinbox.com.br/login","https://gift.hortinbox.com.br"]}})
-
+CORS(app,
+     supports_credentials=True,
+     resources={
+         r"/*": {
+             "origins": [
+                 "https://hortinbox.com.br",
+                 "https://www.hortinbox.com.br",
+                 "https://gift.hortinbox.com.br"
+             ]
+         }
+     })
 
 @app.route('/createUser', methods=['POST'])
 def create_user():
@@ -223,5 +232,8 @@ def health():
     return {"status": "ok"}, 200
 
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=(os.getenv("PORT", 8000)))
+    port = int(os.getenv("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)
+

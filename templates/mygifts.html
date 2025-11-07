@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Meus Presentes | Hortinbox</title>
-  <link rel="stylesheet" href="../static/styles.css">
-</head>
-<body>
-  <header>
-    <h1>🎉 Meus Presentes</h1>
-    <button id="backBtn" style="float:right; margin-top:-40px;">Voltar</button>
-  </header>
+   <head>
+      <meta charset="UTF-8" />
+      <title>Meus Presentes | Hortinbox</title>
+      <link rel="stylesheet" href="../static/styles.css" />
+   </head>
+   <body>
+      <header>
+         <h1>🎉 Meus Presentes</h1>
+         <button id="backBtn" style="float: right; margin-top: -40px">
+            Voltar
+         </button>
+      </header>
 
-  <main id="my-gifts"></main>
+      <main id="my-gifts"></main>
 
-  <footer><p>Chá de Panela - Marcos & Nayara</p></footer>
+      <footer><p>Chá de Panela - Marcos & Nayara</p></footer>
 
-  <script>
-    async function carregarMeusPresentes() {
-      const res = await fetch('/me/gifts', { credentials: 'include' });
-      const gifts = await res.json();
-      const main = document.getElementById("my-gifts");
-      main.innerHTML = "";
+      <script>
+         async function carregarMeusPresentes() {
+            const res = await fetch("/me/gifts", { credentials: "include" });
+            const gifts = await res.json();
+            const main = document.getElementById("my-gifts");
+            main.innerHTML = "";
 
-      gifts.forEach(g => {
-        const div = document.createElement("div");
-        div.className = "gift catched";
-        div.innerHTML = `
-          <img src="${g.source_img || ''}">
+            gifts.forEach((g) => {
+               const div = document.createElement("div");
+               div.className = "gift catched";
+               div.innerHTML = `
+          <img src="${g.source_img || ""}">
           <h3>${g.description}</h3>
-          <a href="${g.url || '#'}" target="_blank">Ver anúncio</a>
+          <a href="${g.url || "#"}" target="_blank">Ver anúncio</a>
           <button onclick="despegar(${g.gift_id})">Desfazer</button>
         `;
-        main.appendChild(div);
-      });
-    }
+               main.appendChild(div);
+            });
+         }
 
-    async function despegar(id) {
-      const res = await fetch(`/getGift/${id}`, { method: "DELETE", credentials: "include" });
-      if (res.ok) carregarMeusPresentes();
-    }
+         async function despegar(id) {
+            const res = await fetch(`/getGift/${id}`, {
+               method: "DELETE",
+               credentials: "include",
+            });
+            if (res.ok) carregarMeusPresentes();
+         }
 
-    document.getElementById("backBtn").addEventListener("click", () => window.location.href = "/");
-    carregarMeusPresentes();
-  </script>
-</body>
+         document
+            .getElementById("backBtn")
+            .addEventListener("click", () => (window.location.href = "/"));
+         carregarMeusPresentes();
+      </script>
+   </body>
 </html>
