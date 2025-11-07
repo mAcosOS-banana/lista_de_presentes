@@ -7,11 +7,12 @@ from models.guest_id import Guest
 from models.gifts_guest import GiftsGuest
 from schemas.gift_schema import GiftSchema
 from schemas.guests_schema import GuestSchema
+import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'f5c7591e60a8d1f4bfd2b7979458ba66'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://marcos:3ut34m01010.@chapanela.c5g60scq2m7v.sa-east-1.rds.amazonaws.com:5432/ldw'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 
     
 db.init_app(app)
