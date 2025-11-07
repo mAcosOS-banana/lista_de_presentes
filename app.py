@@ -8,6 +8,11 @@ from models.gifts_guest import GiftsGuest
 from schemas.gift_schema import GiftSchema
 from schemas.guests_schema import GuestSchema
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 
 app = Flask(__name__)
 
@@ -219,4 +224,4 @@ def index():
     return 'App online e funcionando!', 200
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8080)))
