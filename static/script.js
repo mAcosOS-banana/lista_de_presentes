@@ -1,6 +1,6 @@
 
 // ✅ troque isso se estiver online (ex.: "https://api.hortinbox.com")
-const API_URL = "http://gift.hortinbox.com.br";
+const API_URL = "https://gift.hortinbox.com.br";
 
 async function login(e) {
   e.preventDefault();

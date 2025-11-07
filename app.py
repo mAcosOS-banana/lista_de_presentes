@@ -29,14 +29,13 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-CORS(app,
-     supports_credentials=True,
-     origins=["http://127.0.0.1:3000", "http://localhost:3000", "https://hortinbox.com"])
+CORS(app,supports_credentials=True, sources={r"/*": {"origins": ["https://hortinbox.com.br", "https://www.hortinbox.com.br","https://gift.hortinbox.com.br/login","https://gift.hortinbox.com.br"]}})
+
 
 @app.route('/createUser', methods=['POST'])
 def create_user():
    data = request.get_json()
-   guest_data = GuestSchema(**data) 
+   guest_data = GuestSchema(**data)
    guest = Guest(**guest_data.to_dict())
    db.session.add(guest)
    db.session.commit()
@@ -219,9 +218,10 @@ def my_gifts_page():
 
 
 
-@app.route('/')
-def index():
-    return 'App online e funcionando!', 200
+@app.route('/health')
+def health():
+    return {"status": "ok"}, 200
+
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8080)))
+    app.run(host="0.0.0.0", port=(os.getenv("PORT", 8000)))
