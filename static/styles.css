@@ -1,76 +1,166 @@
 :root {
-  --green: #3E8C57;
-  --light-green: #A4D47C;
+  --green: #222422;
+  --light-green: #90928e;
   --bg: #F4F1EC;
-  --text: #333;
+  --text: #000000;
   --radius: 12px;
+  --maxw: 1200px;
+  --space: 16px;
+}
+
+* {
+  font-family: 'Archivo', 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
   background: var(--bg);
   color: var(--text);
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ---------------- Header ---------------- */
 header {
   background: var(--green);
   color: white;
   text-align: center;
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 2rem);
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
+  position: relative;
 }
 
-main {
-  padding: 2rem;
+header h1 {
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* “actions” = o <div> de botões dentro do header */
+header div {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: .5rem;
 }
 
+header div button {
+  position: initial;
+  max-width: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/* ---------------- Main (grid fluida) ---------------- */
+main {
+  width: min(var(--maxw), 100% - var(--space)*2);
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 2rem);
+  display: grid;
+  grid-template-columns: 1fr;               /* mobile: 1 coluna */
+  gap: 1rem;
+  flex: 1;
+}
+
+/* ---------------- Card ---------------- */
 .gift {
   background: white;
   border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 270px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  width: 100%;
   text-align: center;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: transform .2s, box-shadow .2s;
 }
 
-.gift:hover { transform: translateY(-4px); }
+@media (hover:hover) {
+  .gift:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+}
 
 .gift img {
   width: 100%;
-  height: 170px;
+  aspect-ratio: 16/10;   /* mantém proporção elegante em qualquer tela */
   object-fit: cover;
+  height: auto;
 }
 
-.gift h3 { margin: 1rem 0 0.5rem; }
-.gift a { color: var(--green); text-decoration: none; font-weight: 500; }
+.gift h3 {
+  margin: 1rem .75rem .5rem;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
+}
+
+.gift a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
 
 button {
   background: var(--green);
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 0.6rem 1rem;
+  padding: .6rem 4rem;
   margin: 1rem 0;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background .3s;
+  font-size: .95rem;
 }
 
 button:hover { background: var(--light-green); }
 
-.gift.catched {
-  opacity: 0.6;
-}
+.gift.catched { opacity: .6; }
 
+#logoutBtn { border: solid 1px #fff; }
+#myGiftsBtn { background-color: aliceblue; color: #000; }
+
+/* ---------------- Footer ---------------- */
 footer {
   text-align: center;
   padding: 1rem;
-  font-size: 0.9rem;
+  font-size: .9rem;
   color: #555;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+/* ========================================= */
+/* 📱 breakpoints                           */
+/* ========================================= */
+
+/* até 480px (ex: 375x851): empilha ações, botão full, cards 1 coluna */
+@media (max-width: 480px) {
+  header { padding-bottom: 1.5rem; }
+  header div {
+    position: static !important;     /* derruba o absolute do desktop */
+    justify-content: center;
+    margin-top: .75rem;
+  }
+  header button { padding: .6rem 1rem; font-size: .9rem; }
+  main { gap: .9rem; }
+  button { width: 100%; max-width: 320px; margin-inline: auto; }
+}
+
+/* 481–799px (phones grandes / tablets em pé): 2 colunas */
+@media (min-width: 481px) and (max-width: 799px) {
+  main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gift { max-width: 520px; margin-inline: auto; }
+}
+
+/* ≥ 800px (tablet deitado/desktop): 3–4 colunas auto-fit */
+@media (min-width: 800px) {
+  main { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  header div { position: absolute; top: 1rem; right: 1rem; }
+
+}
+
+/* acessibilidade: reduz animações se o usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }

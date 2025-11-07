@@ -10,9 +10,10 @@ from schemas.guests_schema import GuestSchema
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://marcos:3ut34m01010.@localhost:5432/ldw'
+app.config['SECRET_KEY'] = 'f5c7591e60a8d1f4bfd2b7979458ba66'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://marcos:3ut34m01010.@chapanela.c5g60scq2m7v.sa-east-1.rds.amazonaws.com:5432/ldw'
 
+    
 db.init_app(app)
 
 
@@ -212,4 +213,4 @@ def my_gifts_page():
 
 
 if __name__ == "__main__":
-   app.run(debug=True)
+   app.run(debug=False)
