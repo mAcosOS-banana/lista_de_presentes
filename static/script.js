@@ -1,5 +1,3 @@
-
-// ✅ troque isso se estiver online (ex.: "https://api.hortinbox.com")
 const API_URL = "https://gift.hortinbox.com.br";
 
 async function login(e) {
@@ -43,29 +41,6 @@ async function carregarPresentes() {
 
 // ✅ Mude aqui caso vá hospedar a API em outro domínio
 
-async function carregarPresentes() {
-  const res = await fetch(`${API_URL}/gifts`, { credentials: "include" });
-  const gifts = await res.json();
-
-  const list = document.getElementById("gift-list");
-  list.innerHTML = "";
-
-  gifts.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "gift" + (p.catched ? " catched" : "");
-    div.innerHTML = `
-      <img src="${p.source_img || ''}" alt="${p.description}">
-      <h3>${p.description}</h3>
-      <a href="${p.url || '#'}" target="_blank">Ver anúncio</a>
-      ${
-        p.catched
-          ? `<button disabled>Já foi pego</button>`
-          : `<button onclick="pegar(${p.gift_id})">Pegar Presente</button>`
-      }
-    `;
-    list.appendChild(div);
-  });
-}
 
 async function pegar(id) {
   const res = await fetch(`${API_URL}/getGift/${id}`, {

@@ -17,7 +17,7 @@ import os
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
 
     
 db.init_app(app)
@@ -34,12 +34,14 @@ CORS(app,
      resources={
          r"/*": {
              "origins": [
-                 "https://hortinbox.com.br",
-                 "https://www.hortinbox.com.br",
-                 "https://gift.hortinbox.com.br"
+                "https://hortinbox.com.br",
+                "https://www.hortinbox.com.br",
+                "https://gift.hortinbox.com.br",
+                "http://127.0.0.1:8080"
              ]
          }
      })
+
 
 @app.route('/createUser', methods=['POST'])
 def create_user():
@@ -79,6 +81,7 @@ def logout():
    return jsonify({"message": "Logout succefully done"})
 
 @app.route("/gifts", methods=['POST'])
+@login_required
 def create_git():
    data = request.get_json()
    gift_data = GiftSchema(**data)
@@ -89,6 +92,7 @@ def create_git():
 
 
 @app.route("/gifts", methods=["GET"])
+@login_required
 def get_gifts():
    gifts = Gifts.query.filter(Gifts.catched.is_(False) | Gifts.catched.is_(None)).all()
 
@@ -105,8 +109,8 @@ def get_gifts():
    
    return jsonify(result), 200
 
-@login_required
 @app.route('/getGift/<int:gift_id>', methods=['PUT'])
+@login_required
 def catch_gift(gift_id):
    data = request.get_json()
    gift = Gifts.query.get(gift_id)
@@ -212,7 +216,6 @@ def get_my_gifts():
 
 
 @app.route('/')
-@login_required
 def home():
     return render_template('index.html')
 
@@ -234,6 +237,6 @@ def health():
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8000))
+    port = int(os.getenv("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
 
