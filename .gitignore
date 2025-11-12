@@ -1,84 +1,72 @@
-# ======================================
-# PYTHON / FLASK
-# ======================================
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.pdb
-*.pkl
-*.log
-*.db
-*.sqlite3
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.ebextensions/
+*.zip
 
-# Virtual environments
-.venv/
+# AWS Credentials e Configurações
+.aws/
+*.pem
+*.key
+*.ppk
+credentials
+config
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
 venv/
 env/
 ENV/
-.venv.bak/
-pip-wheel-metadata/
-*.egg-info/
-.eggs/
-dist/
-build/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
 
-# ======================================
-# FLASK / INSTANCE DATA
-# ======================================
-instance/
-uploads/
-media/
-*.sqlite
-*.sqlite3
-*.db
-*.bak
-
-# ======================================
-# ENVIRONMENT / CREDENTIALS
-# ======================================
-.env
-.env.*
-*.secrets
-*.key
-*.pem
-*.crt
-*.csr
-
-# ======================================
-# IDEs / EDITORS
-# ======================================
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
-*.sublime-project
-*.sublime-workspace
-
-# ======================================
-# SYSTEM FILES
-# ======================================
+*~
 .DS_Store
-Thumbs.db
 
-# ======================================
-# AWS ELASTIC BEANSTALK
-# ======================================
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-.ebextensions/*.bak
-.ebextensions/*.tmp
+# Build outputs
+dist/
+build/
+*.egg-info/
+.eggs/
+target/
 
-# ======================================
-# TESTS / TOOLS
-# ======================================
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.nox/
-.mypy_cache/
-.cache/
-__coverage__/
-test-reports/
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets e Tokens
+secrets.json
+*.secret
+token.json
